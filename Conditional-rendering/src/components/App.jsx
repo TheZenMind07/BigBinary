@@ -4,11 +4,7 @@ import Form from "./Form";
 var userIsRegistered = false;
 
 function App() {
-  return (
-    <div className="container">
-      <Form />
-    </div>
-  );
+    return <div className="container">{userIsRegistered ? <Form button="Register" /> : <Form button="Login" />}</div>;
 }
 
 export default App;
