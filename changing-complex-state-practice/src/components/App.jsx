@@ -8,34 +8,39 @@ function App() {
     });
 
     function clickHandler(event) {
-        let field = event.target.name;
-        let val = event.target.value;
+        //   let field = event.target.name;
+        // let val = event.target.value;
+        const { name, value } = event.target;
+        console.log(event.target);
 
-        if (field === "fName") {
-            setContact(prev => {
-                return {
-                    fName: val,
-                    lName: prev.lName,
-                    email: prev.email
-                };
-            });
-        } else if (field === "lName") {
-            setContact(prev => {
-                return {
-                    fName: prev.fName,
-                    lName: val,
-                    email: prev.email
-                };
-            });
-        } else if (field === "email") {
-            setContact(prev => {
-                return {
-                    fName: prev.fName,
-                    lName: prev.lName,
-                    email: val
-                };
-            });
-        }
+        // if (field === "fName") {
+        //     setContact(prev => {
+        //         return {
+        //             fName: val,
+        //             lName: prev.lName,
+        //             email: prev.email
+        //         };
+        //     });
+        // } else if (field === "lName") {
+        //     setContact(prev => {
+        //         return {
+        //             fName: prev.fName,
+        //             lName: val,
+        //             email: prev.email
+        //         };
+        //     });
+        // } else if (field === "email") {
+        //     setContact(prev => {
+        //         return {
+        //             fName: prev.fName,
+        //             lName: prev.lName,
+        //             email: val
+        //         };
+        //     });
+        // }
+        setContact(prev => {
+            return { ...prev, [name]: value };
+        });
     }
 
     return (
