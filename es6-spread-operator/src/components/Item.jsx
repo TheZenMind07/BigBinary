@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item(props) {
-    return <li>{props.item}</li>;
+    const [isDone, setisDone] = useState(false);
+
+    function textDecoration() {
+        setisDone(prev => {
+            return !prev;
+        });
+    }
+
+    return (
+        <li
+            style={{ textDecoration: isDone ? "line-through" : "none" }}
+            onClick={() => {
+                props.delClick(props.id);
+            }}
+        >
+            {props.item}
+        </li>
+    );
 }
 
 export default Item;

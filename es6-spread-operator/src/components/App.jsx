@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import List from "./List";
+
 function App() {
     const [inputText, setInputText] = useState("");
     const [items, setItem] = useState([]);
@@ -13,6 +15,12 @@ function App() {
         setInputText("");
     }
 
+    function delClick(id) {
+        setItem(prevItems => {
+            return prevItems.filter((item, index) => index !== id);
+        });
+    }
+
     return (
         <div className="container">
             <div className="heading">
@@ -24,13 +32,7 @@ function App() {
                     <span>Add</span>
                 </button>
             </div>
-            <div>
-                <ul>
-                    {items.map(currentitem => {
-                        return <li> {currentitem} </li>;
-                    })}
-                </ul>
-            </div>
+            <List items={items} delClick={delClick} />
         </div>
     );
 }
