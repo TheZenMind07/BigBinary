@@ -9,13 +9,17 @@ function App() {
 
     function clickHandler() {
         setfname(name);
+
+        event.preventDefault();
     }
 
     return (
         <div className="container">
-            <h1>Hello {fname} </h1>
-            <input onChange={changeHandler} type="text" placeholder="What's your name?" value={name} />
-            <button onClick={clickHandler}>Submit</button>
+            <form onSubmit={clickHandler}>
+                <h1>Hello {fname} </h1>
+                <input onChange={changeHandler} type="text" placeholder="What's your name?" value={name} />
+                <button>Submit</button>
+            </form>
         </div>
     );
 }
